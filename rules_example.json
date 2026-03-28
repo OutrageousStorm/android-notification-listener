@@ -1,0 +1,17 @@
+[
+  {
+    "app": "com.google.android.apps.messaging",
+    "keyword": "are you there",
+    "reply": "Yes! Give me a sec."
+  },
+  {
+    "app": "com.whatsapp",
+    "keyword": "hey",
+    "reply": "Hey! Can't talk rn, will reply soon."
+  },
+  {
+    "app": "com.google.android.apps.messaging",
+    "keyword": "call me",
+    "reply": "Can't call right now, will text you!"
+  }
+]
