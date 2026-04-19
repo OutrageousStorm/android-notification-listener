@@ -1,0 +1,19 @@
+{
+  "filters": [
+    {
+      "app": "com.google.android.apps.messaging",
+      "keyword": "urgent",
+      "action": "vibrate"
+    },
+    {
+      "app": "com.whatsapp",
+      "keyword": "@",
+      "action": "log"
+    },
+    {
+      "app": "com.google.android.apps.gmail",
+      "from": "important",
+      "action": "screenshot"
+    }
+  ]
+}
