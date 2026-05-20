@@ -1,24 +1,16 @@
 #!/usr/bin/env python3
-"""Quick-reply to notifications with predefined macros"""
-import subprocess, time
-
+"""Quick-reply macros for notifications"""
+import subprocess, sys
 MACROS = {
-    '1': 'I'm driving, will call you back',
-    '2': 'In a meeting, text you later',
-    '3': 'Got it, thanks!',
-    '4': 'On my way',
+    'busy': "I'm busy right now, will get back to you later",
+    'away': "I'm away from my phone, will reply soon",
+    'ok': "Got it, thanks!",
 }
-
-def send_reply(text):
-    subprocess.run(['adb', 'shell', 'input', 'text', text], check=False)
-    time.sleep(0.2)
-    subprocess.run(['adb', 'shell', 'input', 'keyevent', '66'], check=False)
-
-print("Quick macros:")
-for k, v in MACROS.items():
-    print(f"  {k}: {v}")
-
-choice = input("Select (1-4): ")
-if choice in MACROS:
-    send_reply(MACROS[choice])
-    print("✓ Sent")
+def send_macro(name):
+    text = MACROS.get(name, name)
+    subprocess.run(['adb', 'shell', 'input', 'text', text.replace(' ', '%s')])
+    subprocess.run(['adb', 'shell', 'input', 'keyevent', '66'])  # ENTER
+    print(f"Sent: {text}")
+if __name__ == '__main__':
+    macro = sys.argv[1] if len(sys.argv) > 1 else 'ok'
+    send_macro(macro)
